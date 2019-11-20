@@ -8,7 +8,7 @@
     android:background="@color/white">
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:textColor="@color/black_52575c"
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="kvipul" />
 
@@ -41,7 +41,7 @@
         android:textColor="@color/black_52575c"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toBottomOf="@id/tv_username"
         tools:text="Pictionary repository" />
 
@@ -57,7 +57,7 @@
         android:textColor="@color/black_52575c"
         android:textSize="11dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toBottomOf="@id/tv_repo_name"
         tools:text="Description Description Description DescriptionDescription Description Description" />
 
@@ -72,7 +72,7 @@
         android:fontFamily="@string/roboto_regular"
         android:textColor="@color/black_52575c"
         android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
         app:layout_constraintTop_toBottomOf="@id/tv_description"
         tools:text="c++" />
 
