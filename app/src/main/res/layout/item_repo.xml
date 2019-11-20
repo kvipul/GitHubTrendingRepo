@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:fontFamily="@string/roboto_regular"
+        android:maxLines="1"
+        android:textColor="@color/black_52575c"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="kvipul" />
+
+    <TextView
+        android:id="@+id/tv_repo_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:fontFamily="@string/roboto_medium"
+        android:maxLines="1"
+        android:textColor="@color/black_52575c"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@id/tv_username"
+        tools:text="Pictionary repository" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:fontFamily="@string/roboto_regular"
+        android:maxLines="3"
+        android:textColor="@color/black_52575c"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@id/tv_repo_name"
+        tools:text="Description Description Description DescriptionDescription Description Description" />
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@android:drawable/btn_star"
+        android:drawablePadding="4dp"
+        android:fontFamily="@string/roboto_regular"
+        android:textColor="@color/black_52575c"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView9"
+        app:layout_constraintTop_toBottomOf="@id/tv_description"
+        tools:text="c++" />
+
+    <TextView
+        android:id="@+id/tv_stars"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:drawableLeft="@android:drawable/btn_star"
+        android:drawablePadding="4dp"
+        android:fontFamily="@string/roboto_regular"
+        android:textColor="@color/black_52575c"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_language"
+        app:layout_constraintTop_toTopOf="@id/tv_language"
+        tools:text="500" />
+
+    <TextView
+        android:id="@+id/tv_forks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:drawableLeft="@android:drawable/btn_star"
+        android:drawablePadding="4dp"
+        android:fontFamily="@string/roboto_regular"
+        android:textColor="@color/black_52575c"
+        android:textSize="12dp"
+        app:layout_constraintStart_toEndOf="@+id/tv_stars"
+        app:layout_constraintTop_toTopOf="@id/tv_language"
+        tools:text="1000" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
