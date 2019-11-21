@@ -19,7 +19,15 @@ public class TrendingRepoViewModel extends ViewModel {
         return trendingRepoRepository.getTrendingRepoLiveData();
     }
 
+    public MutableLiveData<Boolean> getErrorLiveData() {
+        return trendingRepoRepository.getErrorLiveData();
+    }
+
+    public void getTrendingRepoData() {
+        trendingRepoRepository.getTrendingRepoData();
+    }
+
     public void getTrendingRepoDataFromNetwork() {
-        trendingRepoRepository.makeRequestToGetTrendingRepo();
+        trendingRepoRepository.fetchTrendingRepoDataFromNetwork();
     }
 }
