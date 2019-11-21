@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.sablania.githubtrendingrepo.R;
 import com.sablania.githubtrendingrepo.modelClasses.TrendingRepo;
 import com.sablania.githubtrendingrepo.modelClasses.User;
+import com.sablania.githubtrendingrepo.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +102,7 @@ public class TrendingRepoAdapter extends RecyclerView.Adapter<TrendingRepoAdapte
                 tvDescription.setText(item.getDescription());
             }
             if (item.getLanguage() == null || item.getLanguage().trim().isEmpty()) {
-                tvLanguage.setVisibility(View.INVISIBLE);
+                tvLanguage.setVisibility(View.GONE);
             } else {
                 tvLanguage.setVisibility(View.VISIBLE);
                 tvLanguage.setText(item.getLanguage());
@@ -118,19 +119,20 @@ public class TrendingRepoAdapter extends RecyclerView.Adapter<TrendingRepoAdapte
                     } else {
                         expendedPosition = position;
                     }
-                    notifyDataSetChanged();
-//                    notifyItemChanged(temp);
-//                    notifyItemChanged(expendedPosition);
+                    notifyItemChanged(temp);
+                    notifyItemChanged(expendedPosition);
                 }
             });
-//            if (position == expendedPosition) {
-//                clDetails.setVisibility(View.VISIBLE);
-//                Utils.expandViewWithAnimation(clDetails);
-//            } else if(clDetails.getVisibility() == View.VISIBLE) {
-//                Utils.collapseViewWithAnimation(clDetails);
-//                clDetails.setVisibility(View.GONE);
-//            }
 
+            //handle animation
+            if (position != expendedPosition) {
+                clDetails.setVisibility(View.GONE);
+            }
+            if (clDetails.getVisibility() == View.GONE && position == expendedPosition) {
+                Utils.expandViewWithAnimation(clDetails);
+            } else if (clDetails.getVisibility() == View.VISIBLE && position != expendedPosition) {
+                Utils.collapseViewWithAnimation(clDetails);
+            }
         }
     }
 }
