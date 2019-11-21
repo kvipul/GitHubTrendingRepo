@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:padding="16dp">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatar"
         android:layout_width="32dp"
         android:layout_height="32dp"
@@ -45,63 +45,72 @@
         app:layout_constraintTop_toBottomOf="@id/tv_username"
         tools:text="Pictionary repository" />
 
-    <TextView
-        android:id="@+id/tv_description"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:ellipsize="end"
-        android:fontFamily="@string/roboto_regular"
-        android:maxLines="3"
-        android:textColor="@color/black_52575c"
-        android:textSize="11dp"
+        android:paddingTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/avatar"
-        app:layout_constraintTop_toBottomOf="@id/tv_repo_name"
-        tools:text="Description Description Description DescriptionDescription Description Description" />
+        app:layout_constraintTop_toBottomOf="@id/tv_repo_name">
 
-    <TextView
-        android:id="@+id/tv_language"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:drawableLeft="@android:drawable/btn_star"
-        android:drawablePadding="4dp"
-        android:fontFamily="@string/roboto_regular"
-        android:textColor="@color/black_52575c"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/avatar"
-        app:layout_constraintTop_toBottomOf="@id/tv_description"
-        tools:text="c++" />
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@string/roboto_regular"
+            android:textColor="@color/black_52575c"
+            android:textSize="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Description Description Description DescriptionDescription Description Description" />
 
-    <TextView
-        android:id="@+id/tv_stars"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:drawableLeft="@android:drawable/btn_star"
-        android:drawablePadding="4dp"
-        android:fontFamily="@string/roboto_regular"
-        android:textColor="@color/black_52575c"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_language"
-        app:layout_constraintTop_toTopOf="@id/tv_language"
-        tools:text="500" />
+        <TextView
+            android:id="@+id/tv_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:drawableLeft="@drawable/ic_language"
+            android:drawablePadding="4dp"
+            android:fontFamily="@string/roboto_regular"
+            android:textColor="@color/black_52575c"
+            android:textSize="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            tools:text="c++" />
 
-    <TextView
-        android:id="@+id/tv_forks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:drawableLeft="@android:drawable/btn_star"
-        android:drawablePadding="4dp"
-        android:fontFamily="@string/roboto_regular"
-        android:textColor="@color/black_52575c"
-        android:textSize="12dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_stars"
-        app:layout_constraintTop_toTopOf="@id/tv_language"
-        tools:text="1000" />
+        <TextView
+            android:id="@+id/tv_stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:drawableLeft="@drawable/star"
+            android:drawablePadding="4dp"
+            android:fontFamily="@string/roboto_regular"
+            android:textColor="@color/black_52575c"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_language"
+            app:layout_constraintTop_toTopOf="@id/tv_language"
+            tools:text="500" />
+
+        <TextView
+            android:id="@+id/tv_forks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:drawableLeft="@drawable/fork"
+            android:drawablePadding="4dp"
+            android:fontFamily="@string/roboto_regular"
+            android:textColor="@color/black_52575c"
+            android:textSize="12dp"
+            app:layout_constraintStart_toEndOf="@+id/tv_stars"
+            app:layout_constraintTop_toTopOf="@id/tv_language"
+            tools:text="1000" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

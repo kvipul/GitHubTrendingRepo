@@ -19,7 +19,7 @@ public class TrendingRepoViewModel extends ViewModel {
         return trendingRepoRepository.getTrendingRepoLiveData();
     }
 
-    public void makeRequestToGetTrendingRepo() {
+    public void getTrendingRepoDataFromNetwork() {
         trendingRepoRepository.makeRequestToGetTrendingRepo();
     }
 }

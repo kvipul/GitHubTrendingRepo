@@ -6,18 +6,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.reflect.TypeToken;
 import com.sablania.githubtrendingrepo.GitHubTrendingRepo;
 import com.sablania.githubtrendingrepo.modelClasses.TrendingRepo;
+import com.sablania.githubtrendingrepo.utils.Api;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TrendingRepoRepository {
@@ -31,9 +28,7 @@ public class TrendingRepoRepository {
     }
 
     public void makeRequestToGetTrendingRepo() {
-        JSONObject requestBody = new JSONObject();
-        String url = "https://github-trending-api.now.sh/repositories"; //provide url here
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, Api.GET_TRENDING_REPO, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 List<TrendingRepo> resp = new Gson().fromJson(response.toString(),
