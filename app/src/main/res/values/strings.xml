@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">GitHubTrendingRepo</string>
     <string name="no_contributor">NO CONTRIBUTOR</string>
+    <string name="loading">Loading...</string>
+    <string name="something_went_wrong">Something went wrong...</string>
+    <string name="an_alien_is_probably_blocking_your_signal">An alien is probably blocking your signal...</string>
+    <string name="retry">Retry</string>
 </resources>

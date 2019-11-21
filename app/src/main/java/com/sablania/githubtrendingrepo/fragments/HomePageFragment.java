@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.Group;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -29,13 +31,18 @@ import butterknife.ButterKnife;
 
 public class HomePageFragment extends Fragment {
 
-
     public static final String TAG = HomePageFragment.class.getSimpleName();
 
     @BindView(R.id.rv_trending_repo)
     RecyclerView rvTrendingRepo;
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
+    @BindView(R.id.cg_progress)
+    Group cgProgress;
+    @BindView(R.id.tv_retry)
+    TextView tvRetry;
+    @BindView(R.id.layout_error)
+    View layoutError;
 
     private TrendingRepoAdapter adapter;
     private TrendingRepoViewModel trendingRepoViewModel;
@@ -56,6 +63,9 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        showProgressUI();
+
         adapter = new TrendingRepoAdapter(getContext());
         rvTrendingRepo.setAdapter(adapter);
         rvTrendingRepo.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -65,13 +75,23 @@ public class HomePageFragment extends Fragment {
 
         trendingRepoViewModel = ViewModelProviders.of(this).get(TrendingRepoViewModel.class);
 
-        trendingRepoViewModel.getTrendingRepoDataFromNetwork();
 
         trendingRepoViewModel.getTrendingRepoLiveData().observe(this, new Observer<List<TrendingRepo>>() {
             @Override
             public void onChanged(List<TrendingRepo> trendingRepos) {
                 adapter.setList(trendingRepos);
                 swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+        trendingRepoViewModel.getErrorLiveData().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean isErrorOccurred) {
+                if (isErrorOccurred) {
+                    showErrorUI();
+                } else {
+                    showDataUI();
+                }
             }
         });
 
@@ -82,6 +102,32 @@ public class HomePageFragment extends Fragment {
             }
         });
 
+        tvRetry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                trendingRepoViewModel.getTrendingRepoData();
+            }
+        });
+
+        trendingRepoViewModel.getTrendingRepoData();
+    }
+
+    private void showProgressUI() {
+        cgProgress.setVisibility(View.VISIBLE);
+        rvTrendingRepo.setVisibility(View.GONE);
+        layoutError.setVisibility(View.GONE);
+    }
+
+    private void showDataUI() {
+        cgProgress.setVisibility(View.GONE);
+        rvTrendingRepo.setVisibility(View.VISIBLE);
+        layoutError.setVisibility(View.GONE);
+    }
+
+    private void showErrorUI() {
+        cgProgress.setVisibility(View.GONE);
+        rvTrendingRepo.setVisibility(View.GONE);
+        layoutError.setVisibility(View.VISIBLE);
     }
 
     @Override
