@@ -100,6 +100,12 @@ public class TrendingRepoAdapter extends RecyclerView.Adapter<TrendingRepoAdapte
                 tvDescription.setVisibility(View.VISIBLE);
                 tvDescription.setText(item.getDescription());
             }
+            if (item.getLanguage() == null || item.getLanguage().trim().isEmpty()) {
+                tvLanguage.setVisibility(View.INVISIBLE);
+            } else {
+                tvLanguage.setVisibility(View.VISIBLE);
+                tvLanguage.setText(item.getLanguage());
+            }
             tvStars.setText(String.valueOf(item.getStars()));
             tvForks.setText(String.valueOf(item.getStars()));
 

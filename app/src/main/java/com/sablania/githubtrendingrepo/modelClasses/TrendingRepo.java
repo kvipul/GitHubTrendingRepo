@@ -20,6 +20,9 @@ public class TrendingRepo {
     @SerializedName("description")
     private String description;
 
+    @SerializedName("language")
+    private String language;
+
     @SerializedName("stars")
     private int stars;
 
@@ -66,5 +69,9 @@ public class TrendingRepo {
 
     public List<User> getBuiltBy() {
         return builtBy;
+    }
+
+    public String getLanguage() {
+        return language;
     }
 }
