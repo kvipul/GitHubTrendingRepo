@@ -87,7 +87,8 @@ public class HomePageFragment extends Fragment {
         trendingRepoViewModel.getErrorLiveData().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean isErrorOccurred) {
-                if (isErrorOccurred) {
+                swipeRefreshLayout.setRefreshing(false);
+                if (adapter.getList().isEmpty() && isErrorOccurred) {
                     showErrorUI();
                 } else {
                     showDataUI();
@@ -98,7 +99,7 @@ public class HomePageFragment extends Fragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                trendingRepoViewModel.getTrendingRepoDataFromNetwork();
+                trendingRepoViewModel.fetchTrendingRepoDataFromNetwork();
             }
         });
 

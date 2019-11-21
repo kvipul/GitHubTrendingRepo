@@ -27,7 +27,7 @@ public class TrendingRepoViewModel extends ViewModel {
         trendingRepoRepository.getTrendingRepoData();
     }
 
-    public void getTrendingRepoDataFromNetwork() {
+    public void fetchTrendingRepoDataFromNetwork() {
         trendingRepoRepository.fetchTrendingRepoDataFromNetwork();
     }
 }
