@@ -11,8 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.sablania.githubtrendingrepo.R;
 import com.sablania.githubtrendingrepo.adapters.TrendingRepoAdapter;
@@ -32,6 +34,8 @@ public class HomePageFragment extends Fragment {
 
     @BindView(R.id.rv_trending_repo)
     RecyclerView rvTrendingRepo;
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
 
     private TrendingRepoAdapter adapter;
     private TrendingRepoViewModel trendingRepoViewModel;
@@ -56,16 +60,28 @@ public class HomePageFragment extends Fragment {
         rvTrendingRepo.setAdapter(adapter);
         rvTrendingRepo.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        DividerItemDecoration decoration = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
+        rvTrendingRepo.addItemDecoration(decoration);
+
         trendingRepoViewModel = ViewModelProviders.of(this).get(TrendingRepoViewModel.class);
 
-        trendingRepoViewModel.makeRequestToGetTrendingRepo();
+        trendingRepoViewModel.getTrendingRepoDataFromNetwork();
 
         trendingRepoViewModel.getTrendingRepoLiveData().observe(this, new Observer<List<TrendingRepo>>() {
             @Override
             public void onChanged(List<TrendingRepo> trendingRepos) {
                 adapter.setList(trendingRepos);
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                trendingRepoViewModel.getTrendingRepoDataFromNetwork();
+            }
+        });
+
     }
 
     @Override
