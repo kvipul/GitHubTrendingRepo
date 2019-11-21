@@ -1,6 +1,7 @@
 package com.sablania.githubtrendingrepo.repositories;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -22,6 +23,7 @@ import java.util.List;
 
 public class TrendingRepoRepository {
     private static final long CACHE_EXPIRY_TIMER = 1000 * 60 * 60 * 2; //2 HOURS
+    private static final String TAG = TrendingRepoRepository.class.getSimpleName();
 
     private MutableLiveData<List<TrendingRepo>> trendingRepoLiveData;
 
@@ -57,6 +59,7 @@ public class TrendingRepoRepository {
                 trendingRepoLiveData.postValue(resp);
                 errorLiveData.postValue(false);
                 setTrendingRepoDataToCache(resp);
+                Log.i(TAG, "data fetched from api");
             }
         }, new Response.ErrorListener() {
             @Override
@@ -94,6 +97,7 @@ public class TrendingRepoRepository {
         } else {
             trendingRepoLiveData.postValue(trendingRepoDataFromCache);
             errorLiveData.postValue(false);
+            Log.i(TAG, "data fetched from cache");
         }
     }
 
